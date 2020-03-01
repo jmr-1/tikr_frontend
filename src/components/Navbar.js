@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Navbar.css'
+import DrawerToggleButton from './SideDrawer/DrawerToggleButton.js'
 
 
 class Navbar extends React.Component{
@@ -13,9 +14,9 @@ class Navbar extends React.Component{
 
             <header className="toolbar">
                 <nav className="toolbar_navigation">
-                    <div>Icon</div>
+                    <div><DrawerToggleButton click={this.props.drawerClickHandler}/></div>
                     <div className="spacer"></div>
-                    <div className="toolbar_logo"><a href="/">The Logo</a></div>
+                    <div className="toolbar_logo"><a href="/">TIKR</a></div>
                     <div className="toolbar_navigation_items">
                         <ul>
                             <li><a href='/about'>About</a></li>

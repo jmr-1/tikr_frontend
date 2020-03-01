@@ -7,6 +7,10 @@
     background-color: blueviolet;
 }
 
+.toolbar_logo {
+    margin-left: 1rem;
+}
+
 .toolbar_logo a {
     color: white;
     text-decoration: none;
@@ -22,7 +26,13 @@
 
 .toolbar_navigation_items a:hover,
 .toolbar_navigation_items a:active {
-    color: orange;
+    color: rgb(231, 144, 13);
+}
+
+/* This is to remove the old style hyperlink looks */
+.toolbar_navigation_items a {
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 .toolbar_navigation_items ul {

@@ -5,7 +5,7 @@ const Stock = (props) => {
 
     console.log(props)
     return (
-        <div>
+        <div onClick={e=>{props.details(props.stockInfo)}}>
             Stock info: {props.stockInfo.symbol}
         </div>
     )

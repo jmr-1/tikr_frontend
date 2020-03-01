@@ -6,6 +6,8 @@ import Marketplace from './containers/Marketplace.js';
 import Login from './components/Login.js';
 import LandingPage from './components/LandingPage.js'
 import {Route} from 'react-router-dom';
+import SideDrawer from './components/SideDrawer/SideDrawer.js'
+import Backdrop from './components/Backdrop/Backdrop.js'
 
 
 class App extends React.Component{
@@ -13,22 +15,44 @@ class App extends React.Component{
   constructor(){
     super()
     this.state = {
-      
+      sideDrawerOpen: false,
     }
   }
 
   componentDidMount(){
+
+  }
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) =>{
+      return {sideDrawerOpen: !prevState.sideDrawerOpen}
+    })
+  }
+
+  backdropClickHandler = () => {
+    this.setState({
+      sideDrawerOpen: false,
+    })
   }
 
   render(){
+
+    let backdrop;
+    if (this.state.sideDrawerOpen){
+      backdrop = <Backdrop clickHandler={this.backdropClickHandler}/>
+    }
+
     return (
-      <div className="App">
-        <Navbar />
+      <div className="App" style={{height: '100%'}}>
+        <Navbar drawerClickHandler={this.drawerToggleClickHandler}/>
+        <SideDrawer show={this.state.sideDrawerOpen}/>
+        {backdrop}
         <main style={{marginTop: '64px'}}>
         <Route exact path='/' render={() => <LandingPage />}/>
         <Route exact path='/login' render={() => <Login />}/>
         <Route exact path='/about' render={() => <About />}/>
         <Route exact path='/market' render={() => <Marketplace />}/>
+        
         
         </main>
       </div>
