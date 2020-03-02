@@ -48,10 +48,10 @@ class App extends React.Component{
         <SideDrawer show={this.state.sideDrawerOpen}/>
         {backdrop}
         <main style={{marginTop: '64px'}}>
-        <Route exact path='/' render={() => <LandingPage />}/>
         <Route exact path='/login' render={() => <Login />}/>
         <Route exact path='/about' render={() => <About />}/>
-        <Route exact path='/market' render={() => <Marketplace />}/>
+        <Route path='/market' render={() => <Marketplace />}/>
+        <Route exact path='/' render={() => <LandingPage />}/>
         
         
         </main>

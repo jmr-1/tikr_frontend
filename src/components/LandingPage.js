@@ -1,9 +1,12 @@
 import React from 'react'
 
 
-const LandingPage = () => {
+const LandingPage = (props) => {
     return (
-        <div>Landing Page!</div>
+        <div>
+            Welcome to TIKR! 
+            <p>View the market or log in to buy and sell stocks!</p>
+        </div>
     )
 }
 

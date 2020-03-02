@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Navbar.css'
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton.js'
+import {Link} from 'react-router-dom';
 
 
 class Navbar extends React.Component{
@@ -16,12 +17,12 @@ class Navbar extends React.Component{
                 <nav className="toolbar_navigation">
                     <div><DrawerToggleButton click={this.props.drawerClickHandler}/></div>
                     <div className="spacer"></div>
-                    <div className="toolbar_logo"><a href="/">TIKR</a></div>
+                    <div className="toolbar_logo"><Link to="/">TIKR</Link></div>
                     <div className="toolbar_navigation_items">
                         <ul>
-                            <li><a href='/about'>About</a></li>
-                            <li><a href='/login'>Login</a></li>
-                            <li><a href='/market'>Marketplace</a></li>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/market'>Marketplace</Link></li>
+                            <li><Link to='/about'>About</Link></li>
                         </ul>
                     </div>
                 </nav>
