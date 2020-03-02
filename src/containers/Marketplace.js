@@ -42,8 +42,12 @@ class Marketplace extends React.Component{
 
     fetchDetailedCompanyInfo = (companyID) => {
 
+        //first 100 prices only. Seeded data somehow has 500 prices for a single stock that doesn't correspond with get fetch results
         fetch(`http://localhost:3000/companies/${companyID}`)
-            .then(res => res.json()).then(data => this.setState({stockHistorical: data}))
+            .then(res => res.json()).then(data => {
+                let newData = [...data].slice(0,99)
+                this.setState({stockHistorical: newData})
+            })
     }
 
     searchHandler = (e) => {
@@ -52,6 +56,7 @@ class Marketplace extends React.Component{
         let filteredResults = this.filterStocks(searchText)
         console.log('search results for', searchText, ' results:', filteredResults)
         this.setState({
+            searchText: searchText,
             filteredStocks: filteredResults,
         })
     }
@@ -64,11 +69,9 @@ class Marketplace extends React.Component{
 
     filterStocks = (searchText) => {
 
-        let filteredStocks = [...this.state.allStocks]
-        filteredStocks.filter(stock => {
-            debugger
-            return stock.symbol.includes(searchText)})
-        return filteredStocks 
+        let stockCopy = [...this.state.allStocks]
+        let filteredStocks = stockCopy.filter(stock => stock.symbol.toLowerCase().includes(searchText.toLowerCase()))  
+        return filteredStocks
     }
 
 
@@ -79,7 +82,8 @@ class Marketplace extends React.Component{
             <div>Marketplace
             {(this.state.detailedStock)? <StockDetail details={this.state.detailedStock} history={this.state.stockHistorical} closeDetails={this.closeStockDetail}/> : null }
             <br></br>
-            <SearchBar search={this.searchHandler}/>
+            <SearchBar searchText={this.state.searchText} search={this.searchHandler} />
+            
             <br></br>
             {(this.state.filteredStocks)? this.state.filteredStocks.map(stock => <Stock stockInfo={stock} key={stock.symbol} details={this.getStockDetails}/>) : null }
             </div>

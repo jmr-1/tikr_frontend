@@ -1,4 +1,5 @@
 import React from 'react'
+import StockHistory from '../components/StockHistory.js'
 
 
 export default class ScrollableContainer extends React.Component {
@@ -10,9 +11,19 @@ export default class ScrollableContainer extends React.Component {
         }
     }
 
+    componentDidMount(){
+
+    }
+
+    componentDidUpdate(){
+
+    }
+
     render(){
         return(
-            <div>Container</div>
+            <div onClick={this.props.closeDetails}>Click to close
+                {(this.props.history)? this.props.history.map(history => <StockHistory history={history} key={history.id}/>): null}
+            </div>
         )
     }
 }

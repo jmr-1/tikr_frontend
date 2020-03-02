@@ -4,13 +4,12 @@ import ScrollContainer from '../containers/ScrollableContainer.js'
 
 const StockDetail = (props) => {
 
-    console.log('stock details props:', props.details)
+    // console.log('stock details props:', props.details)
     return (
-    <div className="stock-detail" onClick={props.closeDetails}>Stock details: {props.details.symbol}
+    <div className="stock-detail">Stock details: {props.details.symbol}
     <p>Place buy option here if logged in: </p>
     <button>Buy</button><button>Sell</button>
-    <ScrollContainer />
-    {(props.history)? props.history.map(history => <StockHistory history={history} key={history.id}/>): null}
+    <ScrollContainer history={props.history} closeDetails={props.closeDetails}/>
     </div>
     )
 }

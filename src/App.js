@@ -17,6 +17,7 @@ class App extends React.Component{
     super()
     this.state = {
       sideDrawerOpen: false,
+      currentUser: {},
     }
   }
 
