@@ -8,6 +8,7 @@ import LandingPage from './components/LandingPage.js'
 import {Route} from 'react-router-dom';
 import SideDrawer from './components/SideDrawer/SideDrawer.js'
 import Backdrop from './components/Backdrop/Backdrop.js'
+import UserGeneric from './components/User/UserGeneric.js'
 
 
 class App extends React.Component{
@@ -48,6 +49,7 @@ class App extends React.Component{
         <SideDrawer show={this.state.sideDrawerOpen}/>
         {backdrop}
         <main style={{marginTop: '64px'}}>
+        <Route exact path='/user' render={() => <UserGeneric />} /> 
         <Route exact path='/login' render={() => <Login />}/>
         <Route exact path='/about' render={() => <About />}/>
         <Route path='/market' render={() => <Marketplace />}/>
