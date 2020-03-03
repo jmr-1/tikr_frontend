@@ -22,7 +22,8 @@ export default class ScrollableContainer extends React.Component {
     render(){
         return(
             <div onClick={this.props.closeDetails}>Click to close
-                {(this.props.history)? this.props.history.map(history => <StockHistory history={history} key={history.id}/>): null}
+                {(this.props.shares)? this.props.shares.map(history => <StockHistory history={history} key={history.id}/>) : null}
+
             </div>
         )
     }
