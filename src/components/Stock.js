@@ -5,11 +5,13 @@ const Stock = (props) => {
 
     return (
         <div>
-            <Link to={`/market/stocks/${props.stockInfo.id}`}>
+            {/* <Link to={`/market/stocks/${props.stockInfo.id}`}> */}
+            {/* Will implement link later */}
             <div onClick={e=>{props.details(props.stockInfo)}}>
             Stock info: {props.stockInfo.symbol}
+            
             </div>
-            </Link>
+            {/* </Link> */}
         </div>
     )
 }

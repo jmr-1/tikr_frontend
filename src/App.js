@@ -23,8 +23,6 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-
-
   }
 
   fetchUserInfo = (userID=1) => {
@@ -71,8 +69,9 @@ class App extends React.Component{
         })
       }
     })
-    
   }
+
+  
 
   render(){
 

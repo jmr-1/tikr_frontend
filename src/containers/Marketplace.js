@@ -22,8 +22,8 @@ class Marketplace extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log('Marketplace update:', this.state.detailedStock)
-        console.log('Filtered stocks:', this.state.filteredStocks)
+        // console.log('Marketplace update:', this.state.detailedStock)
+        // console.log('Filtered stocks:', this.state.filteredStocks)
     }
 
     fetchCompanies = () => {
