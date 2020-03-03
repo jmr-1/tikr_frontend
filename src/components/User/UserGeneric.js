@@ -49,6 +49,30 @@ class UserGeneric extends React.Component{
             })
     }
 
+    buyShare = (e, stockDetails) => {
+        console.log('Share bought', stockDetails)
+        
+        fetch('http://localhost:3000/shares/', {
+            method: 'POST',
+            body: JSON.stringify(stockDetails),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        }).then(res => res.json()).then(data => {
+            let newCurrentUserShares = [...this.state.currentUserShares]
+            newCurrentUserShares.push(data)
+            this.setState({
+                currentUserShares: newCurrentUserShares
+            })
+        })
+
+
+    }
+
+    sellShare = (e, stockDetails) => {
+        console.log('Share sold', stockDetails)
+    }
+
     render(){
 
         let {name, organization} = this.props.userInfo
@@ -60,7 +84,7 @@ class UserGeneric extends React.Component{
                 <br></br>
                 Shares Owned:
                 <br></br>
-                {(this.state.detailedStock)? <StockDetail details={this.state.detailedStock} history={this.state.stockHistorical} closeDetails={this.closeStockDetail}/> : null }
+                {(this.state.detailedStock)? <StockDetail details={this.state.detailedStock} history={this.state.stockHistorical} closeDetails={this.closeStockDetail} loggedIn={this.props.loggedIn} buyShare={this.buyShare} sellShare={this.sellShare}/> : null }
                 <br></br>
                 {this.state.currentUserShares ? this.state.currentUserShares.map(share => <Stock stockInfo={share} key={share.id} details={this.getStockDetails} />) : null }
             </div>

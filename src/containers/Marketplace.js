@@ -74,13 +74,19 @@ class Marketplace extends React.Component{
         return filteredStocks
     }
 
+    buyShare = () => {
+        console.log('Share bought')
+    }
 
+    sellShare = () => {
+        console.log('Share sold')
+    }
 
     render(){
 
         return (
             <div>Marketplace
-            {(this.state.detailedStock)? <StockDetail details={this.state.detailedStock} history={this.state.stockHistorical} closeDetails={this.closeStockDetail}/> : null }
+            {(this.state.detailedStock)? <StockDetail details={this.state.detailedStock} history={this.state.stockHistorical} closeDetails={this.closeStockDetail} loggedIn={this.props.loggedIn} buyShare={this.buyShare} sellShare={this.sellShare}/> : null }
             <br></br>
             <SearchBar searchText={this.state.searchText} search={this.searchHandler} />
             

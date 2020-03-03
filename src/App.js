@@ -18,7 +18,8 @@ class App extends React.Component{
     this.state = {
       sideDrawerOpen: false,
       currentUser: null,
-      currentUserShares: []
+      currentUserShares: [],
+      loggedIn: false
     }
   }
 
@@ -66,6 +67,7 @@ class App extends React.Component{
       if(user.found){
         this.setState({
           currentUser: user.user,
+          loggedIn: true
         })
       }
     })
@@ -89,7 +91,7 @@ class App extends React.Component{
           <Switch>
             <Route exact path='/profile' render={() => {
               return this.state.currentUser? 
-              <UserGeneric userInfo={this.state.currentUser} userShares={this.state.currentUserShares}/> :
+              <UserGeneric userInfo={this.state.currentUser} userShares={this.state.currentUserShares} loggedIn={this.state.loggedIn}/> :
               <Redirect to='/login' />
             }}/> 
             <Route exact path='/login' render={() => {
@@ -97,7 +99,7 @@ class App extends React.Component{
               <Redirect to='/profile' />
             }}/>
             <Route exact path='/about' render={() => <About />}/>
-            <Route path='/market' render={() => <Marketplace />}/>
+            <Route path='/market' render={() => <Marketplace loggedIn={this.state.loggedIn}/>}/>
             <Route exact path='/' render={() => <LandingPage />}/>
           </Switch>
         </main>
