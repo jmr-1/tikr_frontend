@@ -83,26 +83,24 @@ class App extends React.Component{
 
     return (
       <div className="App" style={{height: '100%'}}>
-        <Navbar drawerClickHandler={this.drawerToggleClickHandler}/>
-        <SideDrawer show={this.state.sideDrawerOpen}/>
+        <Navbar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.currentUser}/>
+        <SideDrawer show={this.state.sideDrawerOpen} user={this.state.currentUser}/>
         {backdrop}
         <main style={{marginTop: '64px'}}>
-        <Switch>
-          <Route exact path='/profile' render={() => {
-            return this.state.currentUser? 
-            <UserGeneric userInfo={this.state.currentUser} userShares={this.state.currentUserShares}/> :
-            <Redirect to='/login' />
-          }}/> 
-          <Route exact path='/login' render={() => {
-            return !this.state.currentUser? <Login login={this.changeCurrentUser}/> :
-            <Redirect to='/profile' />
-          }}/>
-          <Route exact path='/about' render={() => <About />}/>
-          <Route path='/market' render={() => <Marketplace />}/>
-          <Route exact path='/' render={() => <LandingPage />}/>
-        </Switch>
-        
-        
+          <Switch>
+            <Route exact path='/profile' render={() => {
+              return this.state.currentUser? 
+              <UserGeneric userInfo={this.state.currentUser} userShares={this.state.currentUserShares}/> :
+              <Redirect to='/login' />
+            }}/> 
+            <Route exact path='/login' render={() => {
+              return !this.state.currentUser? <Login login={this.changeCurrentUser}/> :
+              <Redirect to='/profile' />
+            }}/>
+            <Route exact path='/about' render={() => <About />}/>
+            <Route path='/market' render={() => <Marketplace />}/>
+            <Route exact path='/' render={() => <LandingPage />}/>
+          </Switch>
         </main>
       </div>
     );

@@ -6,6 +6,16 @@ import {Link} from 'react-router-dom';
 
 class Navbar extends React.Component{
 
+    constructor(){
+        super()
+        this.state = {
+        }
+    }
+
+
+    componentDidMount(){
+    }
+
     render(){
 
         return (
@@ -20,8 +30,10 @@ class Navbar extends React.Component{
                     <div className="toolbar_logo"><Link to="/">TIKR</Link></div>
                     <div className="toolbar_navigation_items">
                         <ul>
-                            <li><Link to='/login'>Login</Link></li>
+                            {!this.props.user? 
+                            <li><Link to='/login'>Login</Link></li> :
                             <li><Link to='/profile'>Profile</Link></li>
+                            }
                             <li><Link to='/market'>Marketplace</Link></li>
                             <li><Link to='/about'>About</Link></li>
                         </ul>
