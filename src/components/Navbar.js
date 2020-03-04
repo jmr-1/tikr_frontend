@@ -32,9 +32,10 @@ class Navbar extends React.Component{
                         <ul>
                             {!this.props.user? 
                             <li><Link to='/login'>Login</Link></li> :
-                            <li><Link to='/profile'>Profile</Link></li>
+                                <li><Link to='/profile'>Profile</Link></li>
                             }
                             <li><Link to='/market'>Marketplace</Link></li>
+                            {this.props.user? <li><Link to='/' onClick={this.props.logoutHandler}>Logout</Link></li> : null }
                             <li><Link to='/about'>About</Link></li>
                         </ul>
                     </div>

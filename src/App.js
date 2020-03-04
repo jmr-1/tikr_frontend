@@ -73,7 +73,15 @@ class App extends React.Component{
     })
   }
 
-  
+  userLogout = () => {
+    console.log("Logging out user")
+
+    this.setState({
+      currentUser: null,
+      currentUserShares: [],
+      loggedIn: false
+    })
+  }
 
   render(){
 
@@ -84,7 +92,7 @@ class App extends React.Component{
 
     return (
       <div className="App" style={{height: '100%'}}>
-        <Navbar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.currentUser}/>
+        <Navbar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.currentUser} logoutHandler={this.userLogout}/>
         <SideDrawer show={this.state.sideDrawerOpen} user={this.state.currentUser}/>
         {backdrop}
         <main style={{marginTop: '64px'}}>
