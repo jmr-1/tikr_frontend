@@ -76,10 +76,17 @@ class UserGeneric extends React.Component{
             method: 'POST', //should be DELETE, but this is a workaround bandaid. Need to change routes if this is changed.
             headers: {
                 "Content-Type" : "application/json",
-                "Access-Control-Allow-Origin" : 'http://localhost:3000', //this isn't doing anything, mode: no-cors is why it passes pre-flight check error
+                // "Access-Control-Allow-Origin" : 'http://localhost:3000', //this isn't doing anything, mode: no-cors is why it passes pre-flight check error
             },
             // mode: 'no-cors', //remember to change for CORS compliance
-        }).then(console.log("Share sale has been finalized"))
+        })
+
+        let newStockPortfolio = [...this.state.currentUserShares]
+        newStockPortfolio = newStockPortfolio.filter(share => share !== stockDetails)
+
+        this.setState({
+            currentUserShares: newStockPortfolio
+        })
     }
 
     render(){

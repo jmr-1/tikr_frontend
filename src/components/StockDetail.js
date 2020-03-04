@@ -6,6 +6,7 @@ const StockDetail = (props) => {
 
     return (
     <div className="stock-detail">Stock details: {props.details.symbol}
+    <br></br>
     {props.details.purchase_date? "Purchase Date" : null }
     {props.loggedIn? 
     <BuySell buyShare={props.buyShare} sellShare={props.sellShare} stockDetails={props.details}/> :
