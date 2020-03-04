@@ -3,7 +3,7 @@ import React from 'react'
 
 const BuySell = (props) => {
 
-    console.log('buysell props', props)
+    // console.log('buysell props', props)
     return (
         <div>
             <button onClick={(e)=>props.buyShare(e, props.stockDetails)}>Buy Share</button>

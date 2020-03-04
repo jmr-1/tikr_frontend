@@ -69,8 +69,17 @@ class UserGeneric extends React.Component{
 
     }
 
+    // below code uses no-cors, use only for development testing
     sellShare = (e, stockDetails) => {
         console.log('Share sold', stockDetails)
+        fetch(`http://localhost:3000/sellshare/${stockDetails.id}`, {
+            method: 'POST', //should be DELETE, but this is a workaround bandaid. Need to change routes if this is changed.
+            headers: {
+                "Content-Type" : "application/json",
+                "Access-Control-Allow-Origin" : 'http://localhost:3000', //this isn't doing anything, mode: no-cors is why it passes pre-flight check error
+            },
+            // mode: 'no-cors', //remember to change for CORS compliance
+        }).then(console.log("Share sale has been finalized"))
     }
 
     render(){

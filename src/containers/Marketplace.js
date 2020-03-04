@@ -97,6 +97,7 @@ class Marketplace extends React.Component{
 
     sellShare = () => {
         console.log('Share sold')
+        alert('Please go to your profile page to sell shares of this stock')
     }
 
     render(){
