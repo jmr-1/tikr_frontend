@@ -99,7 +99,7 @@ class App extends React.Component{
               <Redirect to='/profile' />
             }}/>
             <Route exact path='/about' render={() => <About />}/>
-            <Route path='/market' render={() => <Marketplace loggedIn={this.state.loggedIn}/>}/>
+            <Route path='/market' render={() => <Marketplace loggedIn={this.state.loggedIn} currentUser={this.state.currentUser}/>}/>
             <Route exact path='/' render={() => <LandingPage />}/>
           </Switch>
         </main>

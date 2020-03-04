@@ -54,7 +54,7 @@ class Marketplace extends React.Component{
 
         let searchText = e.target.value
         let filteredResults = this.filterStocks(searchText)
-        console.log('search results for', searchText, ' results:', filteredResults)
+        // console.log('search results for', searchText, ' results:', filteredResults)
         this.setState({
             searchText: searchText,
             filteredStocks: filteredResults,
@@ -74,8 +74,25 @@ class Marketplace extends React.Component{
         return filteredStocks
     }
 
-    buyShare = () => {
-        console.log('Share bought')
+    buyShare = (e, stockDetails) => {
+        console.log('Share bought', stockDetails)
+        let currentUser = this.props.currentUser
+        console.log('Current user:', currentUser)
+
+        let stockObj = {
+            user_id: currentUser.id,
+            company_id: stockDetails.id
+        }
+
+        fetch('http://localhost:3000/shares/', {
+            method: 'POST',
+            body: JSON.stringify(stockObj),
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+        })
     }
 
     sellShare = () => {
