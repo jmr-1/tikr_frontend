@@ -93,7 +93,7 @@ class App extends React.Component{
     return (
       <div className="App" style={{height: '100%'}}>
         <Navbar drawerClickHandler={this.drawerToggleClickHandler} user={this.state.currentUser} logoutHandler={this.userLogout}/>
-        <SideDrawer show={this.state.sideDrawerOpen} user={this.state.currentUser}/>
+        <SideDrawer show={this.state.sideDrawerOpen} user={this.state.currentUser} logoutHandler={this.userLogout}/>
         {backdrop}
         <main style={{marginTop: '64px'}}>
           <Switch>

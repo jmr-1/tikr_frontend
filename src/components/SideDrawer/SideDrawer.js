@@ -17,6 +17,7 @@ const SideDrawer = (props) => {
                     <li><Link to='/profile'>Profile</Link></li>
                 }
                 <li><Link to="/market">Marketplace</Link></li>
+                {props.user? <li><Link to='/' onClick={props.logoutHandler}>Logout</Link></li> : null }
                 <li><Link to="/about">About</Link></li>
             </ul>
         </nav>

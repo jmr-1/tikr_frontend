@@ -1,0 +1,8 @@
+.scrollable-container {
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    flex: 1;
+    background: rgb(88, 187, 162);
+    overflow-y: scroll;
+}
