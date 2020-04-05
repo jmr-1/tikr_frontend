@@ -1,5 +1,10 @@
 TIKR is a small stock trading platform with historical trading data. Due to API limitations, historical data is limited but app can scale with more companies. 
 
+Features:
+ - Includes endpoints for users, stocks, and portfolios.
+ - Users can view stock details including historical stock data.
+ - Users can add and remove stocks from their portolio.
+
 To run, please install Ruby and React.  
 This is the backend of the app. Please also go to the front end at https://github.com/jmr-1/tikr_backend . Navigate to the installed directory on your terminal and run:
 >rails db:migrate
